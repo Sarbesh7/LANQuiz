@@ -7,11 +7,13 @@ from ..serializers import CategorySerializer, QuizSerializer, QuestionSerializer
 
 
 class QuestionListCreateView(generics.ListCreateAPIView):
-    queryset = Question.objects.order_by('order')
+    def get_queryset(self):
+        queryset = Question.objects.order_by('order')
+        return queryset
     serializer_class = QuestionSerializer
 
 class QuestionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Question.objects.order_by('order')
+    queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     lookup_field = 'pk'
 

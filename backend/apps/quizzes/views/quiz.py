@@ -5,11 +5,13 @@ from ..serializers import CategorySerializer, QuizSerializer, QuestionSerializer
 
 
 class QuizListCreateView(generics.ListCreateAPIView):
-    queryset = Quiz.objects.order_by('created_at')
+    def get_queryset(self):
+        queryset = Quiz.objects.order_by('-created_at')
+        return queryset
     serializer_class = QuizSerializer
 
 class QuizRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Quiz.objects.order_by('created_at')
+    queryset = Quiz.objects.all()
     serializer_class = QuizSerializer
     lookup_field = 'pk'
 

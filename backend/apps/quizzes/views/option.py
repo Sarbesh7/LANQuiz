@@ -4,11 +4,14 @@ from ..serializers import CategorySerializer, QuizSerializer, QuestionSerializer
 
 
 class OptionListCreateView(generics.ListCreateAPIView):
-    queryset = Option.objects.order_by('order')
+    def get_queryset(self):
+        queryset = Option.objects.order_by('order')
+        return queryset
+    
     serializer_class = OptionSerializer
 
 class OptionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Option.objects.order_by('order')
+    queryset = Option.objects.all()
     serializer_class = OptionSerializer
     lookup_field = 'pk'
 
