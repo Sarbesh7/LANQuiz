@@ -5,10 +5,13 @@ from ..serializers import CategorySerializer, QuizSerializer, QuestionSerializer
 
 
 class CategoryListCreateView(generics.ListCreateAPIView):
-    queryset = Category.objects.order_by('name')
     serializer_class = CategorySerializer
     
+    def get_queryset(self):
+        queryset = Category.objects.order_by('name')
+        return queryset
+    
 class CategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.order_by('name')
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
     lookup_field = 'pk'
