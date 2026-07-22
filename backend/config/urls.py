@@ -20,11 +20,13 @@ from django.urls import path , include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('apps.quizzes.urls')),
+    
+    
     # path('',include('apps.common.urls')),
     # path('',include('apps.rooms.urls')),
     # path('',include('apps.leaderboard.urls')),
     # path('',include('apps.gameplay.urls')),
-    # path('',include('apps.quizzes.urls')),
     # path('',include('apps.accounts.urls'))
     
 ]

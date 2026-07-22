@@ -1,6 +1,54 @@
-from django.contrib import admin
 from django.urls import path
+from .views import (
+    CategoryListCreateView,
+    CategoryRetrieveUpdateDestroyView,
+    QuizListCreateView,
+    QuizRetrieveUpdateDestroyView,
+    QuestionListCreateView,
+    QuestionRetrieveUpdateDestroyView,
+    OptionListCreateView,
+    OptionRetrieveUpdateDestroyView
+)
 
 urlpatterns = [
-  
+    path(
+        "categories/",
+        CategoryListCreateView.as_view(),
+        name="category-list-create",
+    ),
+    path(
+        "categories/<uuid:pk>/",
+        CategoryRetrieveUpdateDestroyView.as_view(),
+        name="category-detail",
+    ),
+    path(
+        "quizzes/",
+        QuizListCreateView.as_view(),
+        name="quiz-list-create",
+    ),
+    path(
+        "quizzes/<uuid:pk>/",
+        QuizRetrieveUpdateDestroyView.as_view(),
+        name="quiz-detail",
+    ),
+    path(
+        "questions/",
+        QuestionListCreateView.as_view(),
+        name="question-list-create",
+    ),
+    path(
+        "questions/<uuid:pk>/",
+        QuestionRetrieveUpdateDestroyView.as_view(),
+        name="question-detail",
+    ),
+    path(
+        "options/",
+        OptionListCreateView.as_view(),
+        name="option-list-create",
+    ),
+    path(
+        "options/<uuid:pk>/",
+        OptionRetrieveUpdateDestroyView.as_view(),
+        name="option-detail",
+    ),
 ]
